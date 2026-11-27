@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Color roles of the Pozzo style guide (Material 3, terracotta #B5472A with a gold accent #C9A845),
-/// the same ones the Kotlin application uses.
+/// Color roles of the Pozzo style guide (Material 3, terracotta #B5472A with a gold accent #C9A845).
 class PozzoTheme {
   const PozzoTheme._();
 
