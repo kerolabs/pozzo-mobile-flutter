@@ -28,6 +28,8 @@ Packages: `http` for the services, `get_it` for dependency injection and `sqflit
 
 ## Getting started
 
+The project uses Flutter 3.47.7 (Dart 3.13.5), the same version the CI runs.
+
 ```
 flutter pub get
 git config core.hooksPath .githooks
