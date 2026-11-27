@@ -1,8 +1,7 @@
 # Pozzo · Flutter
 
-Cross-platform application of Pozzo, the savings group (junta) app by Kerolabs. It consumes the same RESTful
-services as the native Android application ([pozzo-mobile](https://github.com/kerolabs/pozzo-mobile)), deployed at
-<https://api-kerolabs.duckdns.org/swagger-ui/index.html>.
+Cross-platform application of Pozzo, the savings group (junta) app by Kerolabs, for Android, iOS and the web.
+It consumes the Pozzo RESTful services, documented at <https://api-kerolabs.duckdns.org/swagger-ui/index.html>.
 
 ## Structure
 
