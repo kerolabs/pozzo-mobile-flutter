@@ -57,10 +57,15 @@ class _PhonePageState extends State<PhonePage> {
                       placeholder: '999 000 123',
                       keyboardType: TextInputType.phone,
                       autofocus: true,
+                      enabled: !state.isLoading,
                       supportingText:
                           'Los 9 dígitos de tu celular, empezando por 9. Solo lo usamos para verificar tu identidad.',
                       errorText: state.errorMessage,
-                      onSubmitted: (_) => _sendCode(),
+                      onSubmitted: (_){
+                        if(state.canSend){
+                          _sendCode();
+                        }
+                      },
                     ),
                   ],
                 ),
