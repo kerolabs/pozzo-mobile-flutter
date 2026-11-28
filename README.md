@@ -10,8 +10,10 @@ context under `lib/features`, each one split in four layers.
 
 ```
 lib/
-  core/                      service locator (get_it) and theme
+  core/                      service locator (get_it), database (sqflite), HTTP client, theme, formats
+                             and the widgets every screen shares
   features/
+    main/                    bottom bar with Juntas, Historial, Avisos and Perfil, and the links of the notices
     iam/                     access with the phone, profile
     savings_groups/          groups, members, invitations and turns
     contributions/           periods, contributions, receipts, pot and auctions
@@ -23,7 +25,16 @@ lib/
       presentation/          pages, widgets, view models and their state
 ```
 
-Packages: `http` for the services, `get_it` for dependency injection and `sqflite` for local storage.
+Packages: `http` for the services, `get_it` for dependency injection, `sqflite` for local storage (session,
+groups and the last copy of the contributions, to show them without signal), `image_picker` for the photos of
+receipts and profiles and `url_launcher` for the Terms and the Privacy Policy.
+
+Each page creates its view model from the service locator and listens to it with a `ListenableBuilder`; the view
+model keeps an immutable state and calls the use cases, which only know the repository contracts of the domain.
+
+What the Android application does with native services is left out: the push notifications (Firebase Cloud
+Messaging; the notices are read from the inbox in the "Avisos" tab) and the reading of receipts on the phone (ML Kit;
+the member writes the data of the receipt and its photo is kept with the contribution).
 
 ## Getting started
 

@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The app consumes the Pozzo RESTful services. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="Pozzo"
         android:name="${applicationName}"
@@ -40,6 +42,11 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- The Terms and the Privacy Policy open in the browser (url_launcher). -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
         </intent>
     </queries>
 </manifest>
