@@ -48,11 +48,22 @@ class ContributionRepositoryImpl implements ContributionRepository {
       .contribution(await api.registerContribution(periodId, ContributionMappers.receiptRequest(receipt)));
 
   @override
-  Future<Contribution> registerCash(String periodId, String membershipId, double amount, DateTime receivedOn) async =>
+  Future<Contribution> registerCash(
+    String periodId,
+    String membershipId,
+    double amount,
+    DateTime receivedOn, {
+    bool differenceConfirmed = false,
+  }) async =>
       ContributionMappers.contribution(
         await api.registerCash(
           periodId,
-          {'membershipId': membershipId, 'amount': amount, 'receivedOn': Formats.isoDate(receivedOn)},
+          {
+            'membershipId': membershipId,
+            'amount': amount,
+            'receivedOn': Formats.isoDate(receivedOn),
+            'differenceConfirmed': differenceConfirmed,
+          },
         ),
       );
 

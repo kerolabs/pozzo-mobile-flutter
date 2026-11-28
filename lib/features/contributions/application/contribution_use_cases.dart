@@ -74,8 +74,14 @@ class RegisterCashUseCase {
 
   final ContributionRepository repository;
 
-  Future<Contribution> execute(String periodId, String membershipId, double amount, DateTime receivedOn) =>
-      repository.registerCash(periodId, membershipId, amount, receivedOn);
+  Future<Contribution> execute(
+    String periodId,
+    String membershipId,
+    double amount,
+    DateTime receivedOn, {
+    bool differenceConfirmed = false,
+  }) =>
+      repository.registerCash(periodId, membershipId, amount, receivedOn, differenceConfirmed: differenceConfirmed);
 }
 
 class RegisterCoverageUseCase {
