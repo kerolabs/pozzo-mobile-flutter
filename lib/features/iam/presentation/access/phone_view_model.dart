@@ -12,8 +12,8 @@ class PhoneViewModel extends ViewModel<PhoneState> {
 
   void onPhoneChanged(String value) => emit(state.copyWith(phone: PhoneNumbers.clean(value), clearError: true));
 
-  /// Returns the code sent, so the page opens the next step; null when it failed.
   Future<CodeRequest?> sendCode() async {
+    if (state.isLoading) return null;
     if (!PhoneNumbers.isValid(state.phone)) {
       emit(state.copyWith(errorMessage: 'Ingresa un celular de nueve dígitos que empiece con 9.'));
       return null;
