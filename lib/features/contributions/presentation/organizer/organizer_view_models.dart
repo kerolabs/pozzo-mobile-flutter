@@ -134,12 +134,19 @@ class SettleViewModel extends ViewModel<SettleState> {
 
   void onReceivedOnChanged(DateTime value) => emit(state.copyWith(receivedOn: value));
 
-  Future<bool> registerCashContribution() => _save((period) {
+  /// The page asks the organizer to confirm an amount other than what is owed before calling this.
+  Future<bool> registerCashContribution({bool differenceConfirmed = false}) => _save((period) {
         final member = state.selectedMember;
         final amount = state.amountValue;
         if (member == null) throw const AppException('Elige a quién recibiste el aporte.');
         if (amount == null) throw const AppException('Ingresa el monto recibido.');
-        return registerCash.execute(period.id, member, amount, state.receivedOn);
+        return registerCash.execute(
+          period.id,
+          member,
+          amount,
+          state.receivedOn,
+          differenceConfirmed: differenceConfirmed,
+        );
       });
 
   Future<bool> registerCoverageContribution() => _save((period) {

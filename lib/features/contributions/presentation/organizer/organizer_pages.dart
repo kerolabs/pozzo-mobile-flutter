@@ -54,7 +54,8 @@ class _CashPageState extends State<CashPage> {
 
   Future<void> _register() async {
     final state = viewModel.state;
-    if (state.amountDiffers) {
+    final differs = state.amountDiffers;
+    if (differs) {
       final name = state.period?.members
               .where((member) => member.membershipId == state.selectedMember)
               .firstOrNull
@@ -71,7 +72,7 @@ class _CashPageState extends State<CashPage> {
       );
       if (!confirmed) return;
     }
-    final saved = await viewModel.registerCashContribution();
+    final saved = await viewModel.registerCashContribution(differenceConfirmed: differs);
     if (saved && mounted) Navigator.pop(context);
   }
 

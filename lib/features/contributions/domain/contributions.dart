@@ -298,7 +298,14 @@ abstract class ContributionRepository {
 
   Future<Contribution> registerContribution(String periodId, ReceiptData receipt);
 
-  Future<Contribution> registerCash(String periodId, String membershipId, double amount, DateTime receivedOn);
+  /// [differenceConfirmed] says the organizer confirmed an amount other than what the member owes (US27).
+  Future<Contribution> registerCash(
+    String periodId,
+    String membershipId,
+    double amount,
+    DateTime receivedOn, {
+    bool differenceConfirmed = false,
+  });
 
   Future<Contribution> registerCoverage(String periodId, String membershipId, String coveredByMembershipId);
 
